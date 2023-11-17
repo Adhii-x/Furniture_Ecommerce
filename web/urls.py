@@ -7,10 +7,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("sign_up", views.sign_up, name="sign_up"),
     path("login", views.login, name="login"),
-    #     path("cart_details",views.cart_detail,name='cart_details'),
     path("logout", views.logout_view, name="logout"),
-    #     path('cart/add/<int:id>/',views.cart_a)
-    #
     path("cart/add/<int:id>/", views.cart_add, name="cart_add"),
     path("cart/item_clear/<int:id>/", views.item_clear, name="item_clear"),
     path("cart/item_increment/<int:id>/", views.item_increment, name="item_increment"),
@@ -19,7 +16,6 @@ urlpatterns = [
     path("cart/cart-details/", views.cart_detail, name="cart_details"),
     path("checkout", views.checkout, name="checkout"),
     path("placeorder", views.placeorder, name="placeorder"),
-    # path("su")
     path(
         "create-checkout-session",
         CreateStripeCheckoutSessionView.as_view(),
