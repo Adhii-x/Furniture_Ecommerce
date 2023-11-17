@@ -6,7 +6,7 @@ from .views import CreateStripeCheckoutSessionView
 urlpatterns = [
     path("", views.index, name="index"),
     path("sign_up", views.sign_up, name="sign_up"),
-    path("login", views.login, name="login"),
+    path("login", views.user_login, name="login"),
     path("logout", views.logout_view, name="logout"),
     path("cart/add/<int:id>/", views.cart_add, name="cart_add"),
     path("cart/item_clear/<int:id>/", views.item_clear, name="item_clear"),

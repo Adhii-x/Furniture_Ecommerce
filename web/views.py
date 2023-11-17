@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from .models import Product,OrderItem,Order,Blog
 from django.contrib.auth.models import User
-from django.shortcuts import redirect
-
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
+
+# Other imports...
 
 import stripe
 from django.views import View
@@ -23,19 +25,22 @@ def index(request):
     return render(request,'web/index.html',context)
 
 
-def login(request):
-    if request.method=="POST":
-        username = request.POST.get('user_name') 
-        password = request.POST.get('password') 
+
+
+def user_login(request):
+    if request.method == "POST":        
+        username = request.POST.get('user_name')
+        password = request.POST.get('password')
+        
         user = authenticate(request, username=username, password=password)
+        print('user=',user)
         if user is not None:
             login(request, user)
             return redirect('index')
-        
         else:
-            return redirect('signup')
-        
-    return render(request,'web/account/login.html')
+            return redirect('sign_up')
+
+    return render(request, 'web/account/login.html')
 
 
 def sign_up(request):
@@ -64,7 +69,6 @@ def logout_view(request):
     logout(request)
     return render(request,'web/index.html')
     
-
 
 @login_required(login_url="login")
 def cart_add(request, id):
@@ -142,13 +146,13 @@ def placeorder(request):
         order.save()
 
         for i in cart:
-            a=float(cart[i]['price'])
+            a=float(cart[i]['price'])   
             b=int(cart[i]['quantity'])
             total=a*b
 
             order1=OrderItem(
                 order=order,
-                Product=cart[i]['name'],
+                product=cart[i]['name'],
                 image=cart[i]['image'],
                 price=cart[i]['price'],
                 quantity=cart[i]['quantity'],
@@ -191,7 +195,7 @@ class CreateStripeCheckoutSessionView(View):
             line_items=line_items,
             mode="payment",
             success_url='http://localhost:8000/index.html',
-            cancel_url='http://localhost:8000/ind',
+            cancel_url='http://localhost:8000/index.html',
         )
 
 

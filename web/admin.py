@@ -7,35 +7,34 @@ from .models import Blog, Order, OrderItem, Product
 
 
 
-class Orderitems(admin.TabularInline):
-    model = OrderItem
-
-
-class OrderAdmin(admin.ModelAdmin):
-    inlines = [Orderitems]
-
-
 @admin.register(Product)
-class Product(admin.ModelAdmin):
-    list_display = ('user','price','image')
-    list_filter = ('name','price','image')
+class productAdmin(admin.ModelAdmin):
+    list_display = ('name','price',)
+    list_filter = ('name','price',)
 
 
 @admin.register(Blog)
-class Product(admin.ModelAdmin):
-    list_display = ('name','tittle','image','')
-    search_fields = ('user',)
-
-@admin.register(Order)
-class Product(admin.ModelAdmin):
-    list_display = ('user','first_name','last_name','country','address','city','state','pincode','phone','email','date')
-    search_fields = ('user',)
-
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ('name','tittle',)
 
 
 @admin.register(OrderItem)
-class Product(admin.ModelAdmin):
-    list_display = ('order','Product','image','quantity','price','total','paid')
-    search_fields = ('user','Product')
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('product','quantity',)
 
-admin.site.register(Order, OrderAdmin)
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 1
+    fields = ("product","quantity", "image", "price", "total", "paid")
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('first_name','last_name',)
+    search_fields = ('user',)
+    inlines=[OrderItemInline]
+    
+    
+
+

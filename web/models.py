@@ -42,7 +42,7 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    Product = models.CharField(max_length=50)
+    product = models.CharField(max_length=50)
     image = models.ImageField(upload_to="media/order_image")
     quantity = models.IntegerField()
     price = models.FloatField()
@@ -50,4 +50,4 @@ class OrderItem(models.Model):
     paid = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.first_name
+        return self.product
