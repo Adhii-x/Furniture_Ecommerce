@@ -46,86 +46,43 @@
         <link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
 
         <link rel="stylesheet" href="{% static 'assets1/css/style1.css' %}">
-       
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+        <!-- title of site -->
+        <title>Restuarent</title>
+
+        <!-- For favicon png -->
+        <link rel="shortcut icon" type="image/icon" href="{% static 'web/logo/favicon.png' %}"/>
+
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="{% static 'web/css/font-awesome.min.css' %}">
+
+        <!--linear icon css-->
+        <link rel="stylesheet" href="{% static 'web/css/linearicons.css' %}">
+
+        <!--animate.css-->
+        <link rel="stylesheet" href="{% static 'web/css/animate.css' %}">
+
+        <!--owl.carousel.css-->
+        <link rel="stylesheet" href="{% static 'web/css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'web/css/owl.theme.default.min.css' %}">
+
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="{% static 'web/css/bootstrap.css' %}">
+
+        <!-- bootsnav -->
+        <link rel="stylesheet" href="{% static 'web/css/bootsnav.css' %}" >
+
+        <!--style.css-->
+        <link rel="stylesheet" href="{% static 'web/css/style.css' %}">
 
 
-
-
-
-
-
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-
-<!-- title of site -->
-<title>Restuarent</title>
-
-<!-- For favicon png -->
-<link rel="shortcut icon" type="image/icon" href="{% static 'web/logo/favicon.png' %}"/>
-
-<!--font-awesome.min.css-->
-<link rel="stylesheet" href="{% static 'web/css/font-awesome.min.css' %}">
-
-<!--linear icon css-->
-<link rel="stylesheet" href="{% static 'web/css/linearicons.css' %}">
-
-<!--animate.css-->
-<link rel="stylesheet" href="{% static 'web/css/animate.css' %}">
-
-<!--owl.carousel.css-->
-<link rel="stylesheet" href="{% static 'web/css/owl.carousel.min.css' %}">
-<link rel="stylesheet" href="{% static 'web/css/owl.theme.default.min.css' %}">
-
-<!--bootstrap.min.css-->
-<link rel="stylesheet" href="{% static 'web/css/bootstrap.css' %}">
-
-<!-- bootsnav -->
-<link rel="stylesheet" href="{% static 'web/css/bootsnav.css' %}" >
-
-<!--style.css-->
-<link rel="stylesheet" href="{% static 'web/css/style.css' %}">
-
-
-<!--responsive.css-->
-<link rel="stylesheet" href="{% static 'web/css/responsive.css' %}">
-<link rel="stylesheet" href="{% static "web/css/style1.css" %}">
-        
-
+        <!--responsive.css-->
+        <link rel="stylesheet" href="{% static 'web/css/responsive.css' %}">
+        <link rel="stylesheet" href="{% static "web/css/style1.css" %}">
 </head>
     <body>
-		<!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-        <nav class='nav nav-check'>
-                <div class="container ">
-				            <!-- Start Header Navigation -->
-				            <div class="navbar-header">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                          <i class="fa fa-bars"></i>
-                      </button>
-                      <a class="navbar-brand" href="index.html">sine<span>mkt</span>.</a>
-
-                  </div><!--/.navbar-header-->
-                  <!-- End Header Navigation -->
-
-                  <!-- Collect the nav links, forms, and other content for toggling -->
-                  <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
-                      <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-                          <li class=" scroll active"><a href="#home">home</a></li>
-                          <li class="scroll"><a href="#new-arrivals">new arrival</a></li>
-                          <li class="scroll"><a href="#feature">features</a></li>
-                          <li class="scroll"><a href="#blog">blog</a></li>
-                          <li class="scroll"><a href="#newsletter">contact</a></li>
-                          {% if user.is_authenticated %}
-						    <li class="scroll"><a href="{% url 'logout' %}">logout</a></li>
-							{% else %}
-							<li class="scroll"><a href="{% url 'login' %}">login</a></li>
-
-							{% endif %}	
-                      </ul><!--/.nav -->
-                  </div><!-- /.navbar-collapse -->
-              </div><!--/.container-->
-          </nav><!--/nav-->
-          <!-- End Navigation -->
           {% load cart_tag %}
         <!-- checkout area start -->
     <form action="{% url "placeorder" %}" method="POST">
@@ -385,8 +342,6 @@
                             </div>
                             <div class="Place-order mt-25">
                                 <button type="submit" class="btn btn-info w-25">Place to order</button>
-                            {% comment %}<input type="submit" class="btn1 btn-info">
-                            {% endcomment %}
 
                         </div>
                     </div>
@@ -410,7 +365,7 @@
 						<a href="#"><i class="fa fa-behance"></i></a>	
 					</div>
 					<p>
-						&copy;copyright. designed and developed by <a href="https://www.themesine.com/">themesine</a>
+						&copy;copyright. designed and developed by <a href="#">Adhi</a>
 					</p><!--/p-->
 				</div><!--/.text-center-->
 			</div><!--/.container-->
@@ -424,26 +379,26 @@
 			
         </footer><!--/.footer-->
 		<!--footer end-->
-        <script src="{% static 'assets/js/jquery.js' %}"></script>
+        <script src="{% static 'web/assets/js/jquery.js' %}"></script>
         
         <!--modernizr.min.js-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 		
 		<!--bootstrap.min.js-->
-        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'web/assets/js/bootstrap.min.js' %}"></script>
 		
 		<!-- bootsnav js -->
-		<script src="{% static '/assets/js/bootsnav.js' %}"></script>
+		<script src="{% static 'web/assets/js/bootsnav.js' %}"></script>
 
 		<!--owl.carousel.js-->
-        <script src="{% static '/assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'web/assets/js/owl.carousel.min.js' %}"></script>
 
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 		
         
         <!--Custom JS-->
-        <script src="{% static '/assets/js/custom.js' %}"></script>
+        <script src="{% static 'web/assets/js/custom.js' %}"></script>
         
 
 </body>

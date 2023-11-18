@@ -25,8 +25,6 @@ def index(request):
     return render(request,'web/index.html',context)
 
 
-
-
 def user_login(request):
     if request.method == "POST":        
         username = request.POST.get('user_name')
